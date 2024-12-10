@@ -1,71 +1,69 @@
 .btn-links {
-    font-weight: 700;
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.6);
+  font-weight: 700;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.btn-links:hover{
-    color: rgb(255,255,255);
-    text-decoration: underline;
+.btn-links:hover {
+  color: rgb(255, 255, 255);
+  text-decoration: underline;
 }
 
-.activo{
-    font-weight: 700;
-    font-size: 18px;
-    color: rgba(255, 255, 255, 1);
-    text-decoration: underline;
+.activo {
+  font-weight: 700;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 1);
+  text-decoration: underline;
 
 }
 
-.btn-login{
-    width: 196px;
-    height: 53px;
-    background-color: rgba(32, 39, 77, 1);
-    color: rgba(255, 255, 255, 1);
-    font-weight: 400;
-    font-size: 20px;
-    padding: 10px;
-    text-align: center;
-    border-radius: 17px;
+.btn-login {
+  width: 196px;
+  height: 53px;
+  background-color: rgba(32, 39, 77, 1);
+  color: rgba(255, 255, 255, 1);
+  font-weight: 400;
+  font-size: 20px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 17px;
 }
 
-.titulo{
-    font-weight: 700;
-    font-size: 60px;
-    color: rgba(255, 255, 255, 1);
-    text-align: center;
+.titulo {
+  font-weight: 700;
+  font-size: 60px;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
 }
 
-.parrafo{
-    font-size: 20px;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 1);
+.parrafo {
+  font-size: 20px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
 }
 
-.botones{
-    background-color: rgba(255, 255, 255, 1);
-    height: 43px;
-    border-radius: 40px;
-    color: rgba(0, 0, 0, 0.45);
+.botones {
+  background-color: rgba(255, 255, 255, 1);
+  height: 43px;
+  border-radius: 40px;
+  color: rgba(0, 0, 0, 0.45);
 }
 
-.btn-todos{
-    display: block;
-    width: 200px;
-    padding: 10px;
-    border-radius: 15px;
-    font-weight: 700;
-    font-size: 25px;
-    color: #FFFFFF;
-    background-color: rgba(52, 39, 162, 0.8);
-    text-align: center;
-    
-}
+.btn-todos {
+  display: block;
+  width: 200px;
+  padding: 10px;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 25px;
+  color: #FFFFFF;
+  background-color: rgba(52, 39, 162, 0.8);
+  text-align: center;
 
-
-.imagen-projetc{
-    background-color: rgba(81, 69, 198, 1);
-    opacity: 0.7;
 }
 
 
+.imagen-projetc {
+  background-color: rgba(81, 69, 198, 1);
+  opacity: 0.7;
+}

@@ -3,22 +3,28 @@
 
 /* Estilo personalizado para hacer la barra deslizadora más delgada */
 .overflow-auto::-webkit-scrollbar {
-  width: 6px; /* Barra deslizadora delgada */
+  width: 6px;
+  /* Barra deslizadora delgada */
 }
 
 .overflow-auto::-webkit-scrollbar-thumb {
-  background-color: #6b46c1; /* Color de la barra deslizadora */
-  border-radius: 10px; /* Bordes redondeados */
+  background-color: #6b46c1;
+  /* Color de la barra deslizadora */
+  border-radius: 10px;
+  /* Bordes redondeados */
 }
 
 .overflow-auto::-webkit-scrollbar-track {
-  background: #f0f0f0; /* Color del track de la barra deslizadora */
+  background: #f0f0f0;
+  /* Color del track de la barra deslizadora */
 }
 
 /* Estilos para Firefox */
 .overflow-auto {
-  scrollbar-width: thin; /* Barra delgada en Firefox */
-  scrollbar-color: #6b46c1 #f0f0f0; /* Color de la barra y del track en Firefox */
+  scrollbar-width: thin;
+  /* Barra delgada en Firefox */
+  scrollbar-color: #6b46c1 #f0f0f0;
+  /* Color de la barra y del track en Firefox */
 }
 
 
@@ -172,14 +178,14 @@ body {
   border-radius: 4px;
 }
 
-.derecha{
+.derecha {
   position: absolute;
   margin-left: 85px;
   z-index: -1;
   width: auto;
 }
 
-.derecha3{
+.derecha3 {
   position: absolute;
   left: 50px;
   z-index: -1;
