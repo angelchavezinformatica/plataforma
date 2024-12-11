@@ -16,11 +16,12 @@ import { Toaster } from "sonner";
 
 import "./App.css"; // Asegúrate de que la ruta sea correcta
 import "./styles/profile.css";
+import { UserProvider } from "./context/user";
 // import "./styles/proyectos.css";
 
 function App() {
   return (
-    <>
+    <UserProvider>
       <Toaster />
       <div className="w-full h-screen">
         <BrowserRouter>
@@ -42,7 +43,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </div>
-    </>
+    </UserProvider>
   );
 }
 

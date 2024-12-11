@@ -9,8 +9,11 @@ import {
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { BACKEND_URL } from "../config";
+import { useUserContext } from "../context/user";
 
 export default function Login() {
+  const { setUser, setTokens } = useUserContext();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -31,9 +34,10 @@ export default function Login() {
         success: async (data) => {
           const response = await data.json();
 
-          console.log(response);
+          setUser(response.data.user);
+          setTokens(response.data.tokens);
 
-          return "Logged in successfully";
+          return "Login satisfactorio";
         },
         error: () => "Las credenciales son invalidas",
       }
