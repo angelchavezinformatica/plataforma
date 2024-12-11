@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   FaEnvelope,
   FaFacebookF,
@@ -7,8 +8,62 @@ import {
   FaUser,
 } from "react-icons/fa"; // Asegúrate de tener esta línea
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
+import { BACKEND_URL } from "../config";
 
 export default function Register() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
+  const [terms, setTerms] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (password != repeatPassword) {
+      toast.error("Las contraseñas son diferentes");
+      return;
+    }
+    if (!terms) {
+      toast.error(
+        "Debes aceptar los términos y condiciones para utilizar el servicio"
+      );
+      return;
+    }
+
+    const data = {
+      firstName,
+      lastName,
+      email,
+      password,
+    };
+
+    toast.promise(
+      fetch(`${BACKEND_URL}/api/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }),
+      {
+        loading: "Cargando...",
+        success: () => {
+          setFirstName("");
+          setLastName("");
+          setEmail("");
+          setPassword("");
+          setRepeatPassword("");
+          setTerms(false);
+          return "Se ha creado el usuario con éxito";
+        },
+        error: () => "El usuario ya existe",
+      }
+    );
+  };
+
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="flex w-full h-full">
@@ -88,6 +143,7 @@ export default function Register() {
                   placeholder="Nombre"
                   className="bg-[#F4F8F7] text-[] w-full px-3 py-2 border-0 focus:outline-none"
                   required
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
               </div>
             </div>
@@ -103,6 +159,7 @@ export default function Register() {
                   placeholder="Apellido"
                   className="bg-[#F4F8F7] text-[] w-full px-3 py-2 border-0 focus:outline-none"
                   required
+                  onChange={(e) => setLastName(e.target.value)}
                 />
               </div>
             </div>
@@ -118,6 +175,7 @@ export default function Register() {
                   placeholder="Email"
                   className="w-full bg-[#F4F8F7] px-3 py-2 border-0 focus:outline-none"
                   required
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
             </div>
@@ -133,6 +191,7 @@ export default function Register() {
                   placeholder="Contraseña"
                   className=" bg-[#F4F8F7] w-full px-3 py-2 border-0 focus:outline-none"
                   required
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
             </div>
@@ -148,6 +207,7 @@ export default function Register() {
                   placeholder="Repetir Contraseña"
                   className=" bg-[#F4F8F7] w-full px-3 py-2 border-0 focus:outline-none"
                   required
+                  onChange={(e) => setRepeatPassword(e.target.value)}
                 />
               </div>
             </div>
@@ -157,6 +217,7 @@ export default function Register() {
                 type="checkbox"
                 id="terms"
                 className="mr-2 leading-tight"
+                onChange={(e) => setTerms(e.target.checked)}
               />
               <label htmlFor="terms" className="text-[12px] text-[#545454]">
                 He leído y acepto los Términos y Condiciones de ConnectTalent.
@@ -164,12 +225,12 @@ export default function Register() {
             </div>
 
             <div className="flex justify-center">
-              <Link
-                to="/candidatos"
+              <button
+                onClick={handleSubmit}
                 className="w-[150px] bg-[#4F43B1] text-center  text-[#FFFFFF] p-4 rounded-[40px] hover:bg-blue-600 transition duration-300"
               >
                 Registrarse
-              </Link>
+              </button>
             </div>
           </form>
         </div>

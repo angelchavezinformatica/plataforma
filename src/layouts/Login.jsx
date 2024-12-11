@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   FaEnvelope,
   FaFacebookF,
@@ -6,8 +7,39 @@ import {
   FaLock,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
+import { BACKEND_URL } from "../config";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    toast.promise(
+      fetch(`${BACKEND_URL}/api/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      }),
+      {
+        loading: "Cargando...",
+        success: async (data) => {
+          const response = await data.json();
+
+          console.log(response);
+
+          return "Logged in successfully";
+        },
+        error: () => "Las credenciales son invalidas",
+      }
+    );
+  };
+
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="flex w-full h-full">
@@ -65,6 +97,7 @@ export default function Login() {
                   placeholder="Email"
                   className="w-full bg-[#F4F8F7] px-3 py-2 border-0 focus:outline-none"
                   required
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
             </div>
@@ -79,6 +112,7 @@ export default function Login() {
                   placeholder="Contraseña"
                   className=" bg-[#F4F8F7] w-full px-3 py-2 border-0 focus:outline-none"
                   required
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
             </div>
@@ -87,12 +121,12 @@ export default function Login() {
               ¿Olvidaste tu contraseña?
             </a>
             <div className="flex justify-center">
-              <Link
-                to="/home"
+              <button
+                onClick={handleSubmit}
                 className="w-[150px] bg-[#4F43B1] text-center  text-[#FFFFFF] p-4 rounded-[40px] hover:bg-blue-600 transition duration-300"
               >
                 Inicar Sesion
-              </Link>
+              </button>
             </div>
           </form>
         </div>
